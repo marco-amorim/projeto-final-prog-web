@@ -2,12 +2,12 @@ package projetoprogweb.entities;
 
 public class Produto {
 	
-	private int medida;
+	private String medida;
 	private double preco;
 	private int quantidadeDisp;
 	private String nome;
 	
-	public Produto(int medida, double preco, int quantidadeDisp, String nome) {
+	public Produto(String medida, double preco, int quantidadeDisp, String nome) {
 		
 		this.medida = medida;
 		this.preco = preco;
@@ -15,10 +15,10 @@ public class Produto {
 		this.nome = nome;
 	}
 	
-	public int getMedida() {
+	public String getMedida() {
 		return medida;
 	}
-	public void setMedida(int medida) {
+	public void setMedida(String medida) {
 		this.medida = medida;
 	}
 	public double getPreco() {

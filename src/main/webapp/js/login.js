@@ -1,8 +1,4 @@
 function limparCampos() {
-	document.getElementById('inputSenhaLogin').value = '';
-	document.getElementById('inputEmailLogin').value = '';
-}
-
-function entrar() {
-	
+	document.getElementById('senhaLogin').value = '';
+	document.getElementById('emailLogin').value = '';
 }

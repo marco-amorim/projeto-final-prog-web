@@ -1,0 +1,15 @@
+#tabelaProdutos {
+	width: 50%;
+}
+
+#botaoVoltar {
+	 margin-left: 3%;
+}
+
+#botaoCadastrar {
+	margin-right: 3%;
+}
+
+body {
+	background-color: lightgrey;
+}

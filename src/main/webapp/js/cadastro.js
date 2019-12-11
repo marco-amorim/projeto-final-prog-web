@@ -32,27 +32,3 @@ function getDadosEnderecoPorCEP(cep) {
 
 				xmlHttp.send()
 }
-
-
-function validar() {
-	
-	if (document.getElementById('inputSenha').value != document.getElementById('inputConfirmarSenha').value) {
-		
-		alert('Os campos de Senha e Confirmar Senha devem ser iguais!');
-		return
-		
-	}
-	
-	
-}
-
-
-
-
-
-
-
-
-
-
-
