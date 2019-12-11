@@ -5,9 +5,4 @@ function limparCampos() {
 
 function entrar() {
 	
-	if (document.getElementById('senhaLogin').value == '123' && document.getElementById('emailLogin').value != '') {
-	location.replace("https://google.com");
-	} else {
-		alert('senha incorreta');
-	}
 }

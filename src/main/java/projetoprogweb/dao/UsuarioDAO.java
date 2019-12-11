@@ -3,34 +3,36 @@ package projetoprogweb.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import projetoprogweb.db.DB;
 import projetoprogweb.entities.Usuario;
 
 public class UsuarioDAO {
 	
 	Connection conn = null;
-	boolean existeNoBanco = false;
-	boolean alteracaoFeita = false;
-	String usuario = "root";
-    String password = "Marco021995";
-	String url = "jdbc:mysql://localhost:3306/projetofinalprogweb";
 	
 
 	public void salvarUsuario(Usuario user) {
 
 		try {
 			if (conn == null || conn.isClosed()) {
+				Class.forName("com.mysql.jdbc.Driver");
+				String usuario = "root";
+			    String password = "Marco021995";
+				String url = "jdbc:mysql://localhost:3306/projetofinalprogweb";
 				conn = DriverManager.getConnection(url, usuario, password);
 			}
-		} catch (SQLException e1) {
+		} catch (SQLException e1 ) {
 			e1.printStackTrace();
+			
+		} catch (ClassNotFoundException c) {
+			c.printStackTrace();
 		}
+		
 		try {
 			PreparedStatement st = null;
-			st = conn.prepareStatement("INSERT INTO Usuario (email, senha, estado, cidade, bairro, endereco, cep, sexo, nome)"
-					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			st = conn.prepareStatement("INSERT INTO Usuario (email, senha, estado, cidade, bairro, endereco, cep, sexo, nome) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 			st.setString(1, user.getEmail());
 			st.setString(2, user.getSenha());
@@ -47,11 +49,62 @@ public class UsuarioDAO {
 
 			System.out.println("Inclusão realizada com sucesso!");
 
-			DB.closeStatement(st);
 
 		} catch (SQLException e) {
 			System.out.println("Erro no banco!");
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+	}
+	
+	public boolean validarLogin(String email, String senha) {
+
+		try {
+			if (conn == null || conn.isClosed()) {
+				Class.forName("com.mysql.jdbc.Driver");
+				String usuario = "root";
+			    String password = "Marco021995";
+				String url = "jdbc:mysql://localhost:3306/projetofinalprogweb";
+				conn = DriverManager.getConnection(url, usuario, password);
+			}
+		} catch (SQLException e1 ) {
+			e1.printStackTrace();
+			
+		} catch (ClassNotFoundException c) {
+			c.printStackTrace();
+		}
+		
+		try {
+			PreparedStatement st = null;
+			ResultSet rs = null;
+			st = conn.prepareStatement("SELECT * FROM Usuario WHERE email = ? AND senha = ?");
+
+			st.setString(1, email);
+			st.setString(2, senha);
+			
+			rs = st.executeQuery();
+			
+			if (rs.next() == true) {
+				return true;
+			} 
+
+
+		} catch (SQLException e) {
+			System.out.println("Erro no banco!");
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
 	}
 
 //	public void excluiContato(Contato cont) {

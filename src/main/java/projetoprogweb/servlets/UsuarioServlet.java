@@ -32,6 +32,8 @@ public class UsuarioServlet extends HttpServlet {
 		UsuarioDAO dao = new UsuarioDAO();
 		
 		dao.salvarUsuario(user);
+		
+		response.sendRedirect("/projetoprogweb");
 	}
 
 

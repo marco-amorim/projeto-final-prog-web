@@ -15,7 +15,7 @@
 				<div class="card card-signin my-5">
 					<div class="card-body">
 						<h4 class="card-title text-center">Login</h4>
-						<form class="form-signin">
+						<form class="form-signin" action="LoginServlet" method="GET">
 							<div class="form-label-group">
 								<label for="emailLogin">E-mail</label> <input type="email"
 									id="emailLogin" class="form-control" placeholder="E-mail"
