@@ -1,0 +1,18 @@
+body {
+	background-color: lightgrey;
+}
+
+.formulario {
+	width: 100%;
+	padding-left: 30%;
+	padding-right: 30%;
+	margin-top: 3%;
+}
+
+#botaoVoltar {
+	 margin-left: 3%;
+}
+
+#botaoCadastrar {
+	margin-right: 3%;
+}

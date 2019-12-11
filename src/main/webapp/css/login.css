@@ -1,0 +1,11 @@
+body {
+    background-color: lightgrey;
+}
+
+#botaoEntrar {
+	margin-right: 5%;
+}
+
+#botaoLimpar {
+	margin-left: 5%;
+}
